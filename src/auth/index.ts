@@ -45,14 +45,16 @@ export const signUp = (data:IFormData):Promise<any> => {
     formData.append('country', data.country);
     formData.append('geolocation', data.city);
     formData.append('single_file', data.singleFile);
-  formData.append('multi_ups1', data.multipleFile);
+    formData.append('multi_ups1', data.multipleFile1);
+    //formData.append('multi_ups2', );
+   //formData.append('multi_ups3', " ");
    const token = localStorage.getItem('jwt')
     console.log('TOKEN:',token)
 
     const options = {
         method:'POST',
         headers:{
-             Accept: 'application/json',
+            // Accept: 'application/json',
             //'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${token}`
         },

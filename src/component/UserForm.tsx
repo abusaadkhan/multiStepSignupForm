@@ -7,6 +7,7 @@ import SingleFileUpload from "./forms/SingleFileUpload"
 import MultipleFileUpload from "./forms/MultipleFileUpload"
 import { signUp } from "../auth"
 import ProgressBar from "./ProgressBar"
+import FormStatus from "./forms/FormStatus"
 
 const UserForm = () => {
 
@@ -21,8 +22,13 @@ const UserForm = () => {
         pincode : "",
         country: "",
         singleFile: null,
-        multipleFile: null,
-        location: ""
+        location: "",
+        multipleFile1: "",
+        multipleFile2: "",
+        multipleFile3: "",
+        multipleFile4: "",
+        multipleFile5: "",
+        formStatus:"",
     })
 
     const updateFields = (fields: Partial<IFormData>) => {
@@ -35,16 +41,18 @@ const UserForm = () => {
         <BasicDetails {...data} updateFields={updateFields} />,
         <Address {...data} updateFields={updateFields}/>,
         <SingleFileUpload {...data} updateFields={updateFields}/>,
-        <MultipleFileUpload {...data} updateFields={updateFields}  />
+        <MultipleFileUpload {...data} updateFields={updateFields}  />,
+        <FormStatus {...data} />
     ])
 
     function onSubmit(e: FormEvent) {
         e.preventDefault()
         if (!isLastStep) return next()
-        alert("Successful Account Creation")
         signUp(data)
             .then(res =>{
                     console.log('responseeeeee',res)
+                    updateFields({formStatus:res.message})
+                    alert(data.formStatus)
                 }
                 
             )
@@ -64,7 +72,7 @@ const UserForm = () => {
                     {step}
                     <div className="flex gap-10 " >
                         {!isFirstStep && (<button className="py-[2%] w-full h-[40px] rounded-[10px] flex justify-center items-center bg-black text-white font-[700] text-[16px] " type="button" onClick={back}>Back</button>)}
-                        <button className="py-[2%] w-full h-[40px] rounded-[10px] flex justify-center items-center bg-black text-white font-[700] text-[16px] " type="submit">{isLastStep ? "Finish" : "Next"}</button>
+                        <button className="py-[2%] w-full h-[40px] rounded-[10px] flex justify-center items-center bg-black text-white font-[700] text-[16px] " type="submit">{isLastStep ? "Submit" : "Next"}</button>
                     </div>
                 </form>
             </div>

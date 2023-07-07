@@ -1,11 +1,16 @@
 import {  IBasicDetailsFormProps } from '../../utilities/allInterface'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 const BasicDetails = ({userName, email, phone, updateFields}: IBasicDetailsFormProps) => {
+
+
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         updateFields({userName: event.target.value})
     }
 
+    
     return(
         <div className='flex flex-col     ' >
         <div className='flex flex-col'>
@@ -18,7 +23,7 @@ const BasicDetails = ({userName, email, phone, updateFields}: IBasicDetailsFormP
         </div>
         <div className='flex flex-col my-[20px]'>
             <label className='text-[16px] mb-[10px]'>Phone:</label>
-            <input className="p-[3%] bg-[#F5F5F5] rounded-[10px]" placeholder='Enter Phone Number' value={phone} onChange={e => updateFields({phone:e.target.value})} />
+            <PhoneInput international className="p-[3%] bg-[#F5F5F5] rounded-[10px]" placeholder='Enter Phone Number' defaultCountry='IN' value={phone} onChange={() => updateFields({phone:phone})} />
         </div>
         </div>
     )

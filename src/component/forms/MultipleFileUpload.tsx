@@ -11,30 +11,17 @@ const MultipleFileUpload = ({updateFields}: IMultipleFileUploadFormProps) => {
     const selectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { files } = event.target;
         const selectedFiles = files as FileList;
-
-        let file = selectedFiles?.[0]
-        let fileName = selectedFiles?.[0].name.toLowerCase()
-
-        if(fileName.endsWith('.pdf') || fileName.endsWith('.png')){
-            let base64String 
-            const reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onloadend= () =>{
-                let fileString:any = reader.result
-                base64String = fileString.replace('data:', '').replace(/^.+,/, '')
-                console.log('base64string:',base64String);
-            }
-            
-            
-            console.log("selected files:",selectedFiles?.[0])
-            updateFields({multipleFile:selectedFiles?.[0]})
-            //setCurrentFile(selectedFiles?.[0])
+        console.log('SELECTED FILES',selectedFiles)
+        console.log("selected files:",selectedFiles)
+        let filesArray:File[] = []
+        for(let i= 0; i<selectedFiles.length;i++){
+            filesArray.push(selectedFiles?.[i])
+            console.log('FiesARRAY:',filesArray)
         }
-        else{
-            alert('you can upload png or pdf files only.')
-            
-        }
-        //setCurrentFile(selectedFiles?.[0]);
+        updateFields({multipleFile1:selectedFiles})
+        
+        //setCurrentFile(selectedFiles?.[0])
+        
     }
 
     const getCity = (coordinates:string[]) =>{

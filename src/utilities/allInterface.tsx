@@ -14,7 +14,7 @@ export interface AuthToken{
 export interface IFormData{
     userName: string;
     email: string;
-    phone: string;
+    phone: any;
     addOne: string;
     addTwo: string;
     city: string;
@@ -23,13 +23,18 @@ export interface IFormData{
     country: string;
     location: string;
     singleFile : any;
-    multipleFile : any;
+    multipleFile1 : any;
+    multipleFile2?: any;
+    multipleFile3?: any;
+    multipleFile4?: any;
+    multipleFile5?: any;
+    formStatus?: any;
 }
 
 export interface IBasicDetails{
     userName: string;
     email: string;
-    phone: string | number; 
+    phone: any; 
 }
 
 export interface IBasicDetailsFormProps extends IBasicDetails{
@@ -46,7 +51,12 @@ export interface ISingleFileUploadFormProps extends ISingleFileUpload{
 
 export interface IMultipleFileUpload{
     location: string;
-    multipleFile: null | File[] | FileList[]
+    multipleFile1: any;
+    multipleFile2?: any;
+    multipleFile3?: any;
+    multipleFile4?: any;
+    multipleFile5?: any;
+    
 }
 
 export interface IMultipleFileUploadFormProps extends IMultipleFileUpload{
