@@ -55,16 +55,16 @@ const UserForm = () => {
 
     return(
         <>
-            <div>
-                <div>
+            <div className="w-full  h-full flex flex-col items-center " >
+                <div className="mb-24 w-full" >
                     <ProgressBar index={currentStepIndex+1} />
                 </div>
-                <form onSubmit={onSubmit} >
-                    <div>{currentStepIndex + 1} / {steps.length}</div>
+                <form onSubmit={onSubmit} className="bg-white w-[60%] max-[768px]:w-[80%] max-[480px]:w-full p-10 rounded-2xl "  >
+                    
                     {step}
-                    <div>
-                        {!isFirstStep && (<button type="button" onClick={back}>Back</button>)}
-                        <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+                    <div className="flex gap-10 " >
+                        {!isFirstStep && (<button className="py-[2%] w-full h-[40px] rounded-[10px] flex justify-center items-center bg-black text-white font-[700] text-[16px] " type="button" onClick={back}>Back</button>)}
+                        <button className="py-[2%] w-full h-[40px] rounded-[10px] flex justify-center items-center bg-black text-white font-[700] text-[16px] " type="submit">{isLastStep ? "Finish" : "Next"}</button>
                     </div>
                 </form>
             </div>

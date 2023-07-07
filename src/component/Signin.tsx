@@ -40,17 +40,19 @@ const Signin = () => {
     }
 
   return (
-    <div className=' flex justify-center  w-full h-screen ' >
-      <div className='w-[40%] h-[40%]  ' >
-        <div>
-            <label className=' w ' >Email</label>
-            <input value={email} type='email' placeholder='enter Email' onChange={handleEmail} />
+    <div className="w-full  h-full flex flex-col items-center justify-center " >
+      <div className="bg-white w-[60%] max-[768px]:w-[80%] max-[480px]:w-full p-10 rounded-2xl " >
+        <div className='flex flex-col'>
+            <div  className='flex flex-col'>
+                <label  className='text-[16px] mb-[10px]' >Email</label>
+                <input className="p-[3%] bg-[#F5F5F5] rounded-[10px]" value={email} type='email' placeholder='enter Email' onChange={handleEmail} />
+            </div>
+            <div className='flex flex-col my-[20px]'>
+                <label  className='text-[16px] mb-[10px]' >Password</label>
+                <input className="p-[3%] bg-[#F5F5F5] rounded-[10px]" value={password} type='password' placeholder='Enter password' onChange={handlePassword} />
+            </div>
         </div>
-        <div>
-            <label>Password</label>
-            <input value={password} type='password' placeholder='Enter password' onChange={handlePassword} />
-        </div>
-        <button onClick={()=>onSignIn(email,password)}  >Sign In</button>
+        <button className="mt-[10px] py-[2%] w-full h-[40px] rounded-[10px] flex justify-center items-center bg-black text-white font-[700] text-[16px] " onClick={()=>onSignIn(email,password)}  >Sign In</button>
       </div>
     </div>
   );

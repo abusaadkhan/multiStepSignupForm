@@ -14,19 +14,19 @@ const SingleFileUpload = ({updateFields}: ISingleFileUploadFormProps) => {
 
         if(fileName.endsWith('.pdf') || fileName.endsWith('.png')){
             // let base64String 
-            let binaryString
-            const reader = new FileReader()
+            // let binaryString
+            // const reader = new FileReader()
             
-            reader.onload= () =>{
-                // let fileString:any = reader.result
-                // base64String = fileString.replace('data:', '').replace(/^.+,/, '')
-                // binaryString = atob(base64String)
-                console.log('binarystring:',reader.result);
-            }
-            reader.readAsBinaryString(file)
+            // reader.onload= () =>{
+            //     // let fileString:any = reader.result
+            //     // base64String = fileString.replace('data:', '').replace(/^.+,/, '')
+            //     // binaryString = atob(base64String)
+            //     //console.log('binarystring:',reader.result);
+            // }
+            // reader.readAsBinaryString(file)
             
             console.log("selected files:",selectedFiles?.[0])
-            updateFields({singleFile:binaryString})
+            updateFields({singleFile:selectedFiles?.[0]})
             //setCurrentFile(selectedFiles?.[0])
         }
         else{
@@ -37,12 +37,12 @@ const SingleFileUpload = ({updateFields}: ISingleFileUploadFormProps) => {
     }
 
     return(
-        <>
-        <div>
-            <label>Uplaod File:</label>
-            <input type="file"  onChange={selectFile} />
+        <div className='mb-[20px]' >
+        <div className='flex flex-col '>
+            <label className='text-[16px] mb-[10px]' >Uplaod File:</label>
+            <input className="p-[3%] bg-white rounded-[10px]" type="file" required onChange={selectFile}  accept='.png,.pdf' />
         </div>
-        </>
+        </div>
     )
 }
 
