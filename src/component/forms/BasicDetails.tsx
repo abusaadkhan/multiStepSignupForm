@@ -19,11 +19,11 @@ const BasicDetails = ({userName, email, phone, updateFields}: IBasicDetailsFormP
         </div>
         <div className='flex flex-col mt-[20px]'>
             <label className='text-[16px] mb-[10px]'>Email:</label>
-            <input className="p-[3%] bg-[#F5F5F5] rounded-[10px]" type='email' placeholder='Enter Email' value={email} onChange={e => updateFields({email:e.target.value})} />
+            <input className="p-[3%] bg-[#F5F5F5] rounded-[10px]" type='email' required placeholder='Enter Email' value={email} onChange={e => updateFields({email:e.target.value})} />
         </div>
         <div className='flex flex-col my-[20px]'>
             <label className='text-[16px] mb-[10px]'>Phone:</label>
-            <PhoneInput international className="p-[3%] bg-[#F5F5F5] rounded-[10px]" placeholder='Enter Phone Number' defaultCountry='IN' value={phone} onChange={() => updateFields({phone:phone})} />
+            <PhoneInput international className="p-[3%] bg-[#F5F5F5] rounded-[10px]" required placeholder='Enter Phone Number' defaultCountry='IN' value={phone} onChange={() => updateFields({phone:phone})} />
         </div>
         </div>
     )
